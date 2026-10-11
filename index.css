@@ -238,3 +238,106 @@ h1 em, h2 em, blockquote em { font-weight: 500; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Keep storefront copy comfortably readable across desktop and mobile. */
+:is(
+  .announcement-bar,
+  .announcement-bar strong,
+  .main-nav a,
+  .footer-links a,
+  .eyebrow,
+  .hero-copy,
+  .button,
+  .hero-note,
+  .intro-copy,
+  .text-link,
+  .intro-stamp,
+  .filter-button,
+  .search-box input,
+  .product-badge,
+  .favorite-button,
+  .quick-add,
+  .product-name,
+  .product-price,
+  .product-detail,
+  .quote-band > p,
+  .newsletter-copy > p:last-child,
+  .newsletter-form label,
+  .email-entry input,
+  .newsletter-message,
+  .site-footer > p,
+  .site-footer small,
+  .cart-count,
+.drawer-count,
+.no-results,
+.hero-note > span:first-child,
+.intro-stamp span,
+.text-link span,
+.button span,
+.filter-button span,
+.quick-add span,
+.quote-flower,
+  .cart-line-title,
+  .cart-line-price,
+  .quantity-control,
+  .remove-item,
+  .cart-empty p,
+  .cart-footer > p,
+  .cart-subtotal,
+  .toast
+) {
+  font-size: 17px !important;
+}
+
+body {
+  font-size: 17px;
+}
+
+.announcement-bar {
+  height: auto;
+  min-height: 35px;
+  padding: 6px 14px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.cart-count {
+  width: 24px;
+  height: 24px;
+  right: -9px;
+  top: -8px;
+}
+
+.quantity-control button {
+  width: 34px;
+  height: 34px;
+}
+
+@media (max-width: 600px) {
+  .shop-toolbar {
+    overflow: visible;
+  }
+
+  .filter-list {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 5px 17px;
+  }
+
+  .filter-button.active::after {
+    bottom: -3px;
+  }
+
+  .product-info {
+    display: block;
+  }
+
+  .product-price {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .site-footer small {
+    line-height: 1.5;
+  }
+}
