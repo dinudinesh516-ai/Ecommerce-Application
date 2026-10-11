@@ -7,7 +7,7 @@
       name="description"
       content="A thoughtful collection of everyday objects for slower, softer living."
     />
-    <meta name="theme-color" content="#f7f5f0" />
+    <meta name="theme-color" content="#efede6" />
     <title>Sunday Supply — Good things for everyday</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,20 +47,28 @@
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" aria-roledescription="carousel" aria-label="Sunday Supply highlights" aria-labelledby="hero-title">
         <img
           class="hero-image"
           src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=85"
           alt="Sunlit, thoughtfully styled living room with soft natural textures"
         />
         <div class="hero-shade"></div>
-        <div class="hero-content">
-          <p class="eyebrow light-eyebrow"><span></span> MAKE ROOM FOR THE GOOD</p>
+        <div class="hero-content" aria-live="polite">
+          <p class="eyebrow light-eyebrow"><span></span><span class="hero-eyebrow">MAKE ROOM FOR THE GOOD</span></p>
           <h1 id="hero-title">A softer kind<br />of <em>everyday.</em></h1>
           <p class="hero-copy">Thoughtful little things for slow mornings, cozy corners, and everything in between.</p>
-          <a class="button button-light" href="#shop">Find your everyday <span aria-hidden="true">↗</span></a>
+          <a class="button button-light hero-cta" href="#shop">Find your everyday <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-note"><span>01 / 03</span><span>Made for the moments that matter</span></div>
+        <div class="hero-note">
+          <span class="hero-count">01 / 03</span>
+          <span class="hero-caption">Made for the moments that matter</span>
+          <div class="hero-controls" aria-label="Carousel controls">
+            <button class="hero-arrow hero-previous" type="button" aria-label="Previous slide">←</button>
+            <div class="hero-dots" role="group" aria-label="Choose a slide"></div>
+            <button class="hero-arrow hero-next" type="button" aria-label="Next slide">→</button>
+          </div>
+        </div>
       </section>
 
       <section class="intro section-wrap" id="story">
@@ -125,7 +133,7 @@
       <a class="wordmark footer-wordmark" href="#">sunday<span>.</span></a>
       <p>Good things for everyday.</p>
       <div class="footer-links"><a href="#shop">Instagram</a><a href="#story">Our story</a><a href="mailto:hello@sundaysupply.com">Say hello</a></div>
-      <small>© 2025 Sunday Supply Co. Made for the everyday.</small>
+      <small>© 2026 Sunday Supply Co. Made for the everyday.</small>
     </footer>
 
     <div class="overlay" hidden></div>

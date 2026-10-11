@@ -17,6 +17,85 @@ const favorites = new Set();
 let activeFilter = "all";
 let toastTimeout;
 
+const heroSlides = [
+  {
+    image: "photo-1618221195710-dd6b41faaea6",
+    alt: "Sunlit, thoughtfully styled living room with soft natural textures",
+    eyebrow: "MAKE ROOM FOR THE GOOD",
+    title: "A softer kind<br />of <em>everyday.</em>",
+    copy: "Thoughtful little things for slow mornings, cozy corners, and everything in between.",
+    cta: "Find your everyday",
+    caption: "Made for the moments that matter"
+  },
+  {
+    image: "photo-1616486338812-3dadae4b4ace",
+    alt: "Calm, sunlit home interior with warm natural details",
+    eyebrow: "A HOME THAT FEELS LIKE YOU",
+    title: "Come home<br />to <em>calm.</em>",
+    copy: "Easy, considered pieces to make your favorite corners feel even more like yours.",
+    cta: "Find your home things",
+    caption: "Little comforts, right where you need them"
+  },
+  {
+    image: "photo-1600210492486-724fe5c67fb0",
+    alt: "A cozy living space filled with soft neutral furnishings",
+    eyebrow: "SLOW DOWN, SOFTLY",
+    title: "Make space<br />for <em>slow.</em>",
+    copy: "Everyday rituals, softer textures, and small reminders to take your time.",
+    cta: "Find your slow moments",
+    caption: "For slower mornings and softer landings"
+  }
+];
+const heroSection = document.querySelector(".hero");
+const heroImage = document.querySelector(".hero-image");
+const heroDots = document.querySelector(".hero-dots");
+let currentHeroSlide = 0;
+let heroImageRequest = 0;
+
+function renderHeroDots() {
+  heroDots.innerHTML = heroSlides.map((slide, index) => `
+    <button class="hero-dot" type="button" data-hero-slide="${index}" aria-label="Show slide ${index + 1}: ${slide.eyebrow}" aria-current="${index === currentHeroSlide}"></button>
+  `).join("");
+}
+
+function showHeroSlide(index) {
+  currentHeroSlide = (index + heroSlides.length) % heroSlides.length;
+  const slide = heroSlides[currentHeroSlide];
+  const imageRequest = ++heroImageRequest;
+  const title = document.querySelector("#hero-title");
+  const image = new Image();
+  image.onload = () => {
+    if (imageRequest !== heroImageRequest) return;
+    heroImage.src = image.src;
+    heroImage.alt = slide.alt;
+    heroImage.classList.remove("is-changing");
+    void heroImage.offsetWidth;
+    heroImage.classList.add("is-changing");
+  };
+  image.onerror = () => {
+    if (imageRequest === heroImageRequest) showToast("This slide image could not be loaded.");
+  };
+  image.src = imageUrl(slide.image, 2200);
+  document.querySelector(".hero-eyebrow").textContent = slide.eyebrow;
+  title.innerHTML = slide.title;
+  document.querySelector(".hero-copy").textContent = slide.copy;
+  document.querySelector(".hero-cta").firstChild.textContent = `${slide.cta} `;
+  document.querySelector(".hero-caption").textContent = slide.caption;
+  document.querySelector(".hero-count").textContent = `${String(currentHeroSlide + 1).padStart(2, "0")} / ${String(heroSlides.length).padStart(2, "0")}`;
+  renderHeroDots();
+}
+
+renderHeroDots();
+document.querySelector(".hero-previous").addEventListener("click", () => showHeroSlide(currentHeroSlide - 1));
+document.querySelector(".hero-next").addEventListener("click", () => showHeroSlide(currentHeroSlide + 1));
+heroDots.addEventListener("click", (event) => {
+  const dot = event.target.closest("[data-hero-slide]");
+  if (dot) showHeroSlide(Number(dot.dataset.heroSlide));
+});
+window.setInterval(() => {
+  if (!document.hidden) showHeroSlide(currentHeroSlide + 1);
+}, 6000);
+
 const formatPrice = (price) => `$${price.toFixed(2)}`;
 const imageUrl = (id, width = 700) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`;
