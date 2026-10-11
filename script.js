@@ -46,7 +46,6 @@ const heroSlides = [
     caption: "For slower mornings and softer landings"
   }
 ];
-const heroSection = document.querySelector(".hero");
 const heroImage = document.querySelector(".hero-image");
 const heroDots = document.querySelector(".hero-dots");
 let currentHeroSlide = 0;

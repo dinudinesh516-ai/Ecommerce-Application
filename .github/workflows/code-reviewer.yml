@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 concurrency:
   group: code-review-${{ github.workflow }}-${{ github.ref }}
