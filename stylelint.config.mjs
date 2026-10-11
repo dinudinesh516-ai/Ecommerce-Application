@@ -1,6 +1,6 @@
-{
-  "extends": "stylelint-config-standard",
-  "rules": {
+export default {
+  extends: ["stylelint-config-standard"],
+  rules: {
     "alpha-value-notation": null,
     "at-rule-empty-line-before": null,
     "color-function-alias-notation": null,
@@ -14,4 +14,4 @@
     "no-empty-source": null,
     "value-keyword-case": null
   }
-}
+};
